@@ -1,0 +1,31 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-app="newDesign" ng-controller="newDesignCtrl">
+<div ng-hide="showForm"> 
+<button type="button" class="btn btn-default btn-lg" ng-click="hideButton()">
+  <span class="button" aria-hidden="true"></span> {{buttonName}}
+</button>
+</div>
+<div ng-show="showForm" class="col-lg-6">
+ <h3 class="page-header"> New design details </h3>
+ <div class="input-group input-group-lg" >
+  <span class="input-group-addon" id="sizing-addon1">Fabric details</span>
+  <input type="text" class="form-control" placeholder="Fabric mill, quality, colour" aria-describedby="sizing-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">Brand name</span>
+  <input type="text" class="form-control" placeholder="ex: M&S John Lewis" aria-describedby="sizing-addon1">
+</div>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">Price</span>
+  <span class="input-group-addon" id="sizing-addon1">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" aria-describedby="sizing-addon1">
+</div>
+
+<div class="input-group  input-group-lg">
+  <span class="input-group-addon" id="sizing-addon1">Number of pieces</span>
+  <input type="text" class="form-control" aria-describedby="sizing-addon1">
+</div> 
+
+</div>
+</div>

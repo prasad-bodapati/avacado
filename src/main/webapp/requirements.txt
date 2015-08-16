@@ -1,0 +1,16 @@
+Agreement
+
+fabric - type
+design - sketch
+date
+
+Additional details
+factory details
+
+Bill of materials -- types
+
+
+Notes -- 
+
+User defined fields ?
+What about SaaS deployment ?
