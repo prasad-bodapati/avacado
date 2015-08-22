@@ -6,7 +6,8 @@ import java.util.List;
 
 import javax.ws.rs.core.Response;
 
-import com.dominikangerer.gson.provider.v1.model.Resource;
+import com.avacado.rest.model.DesignFields;
+
 
 public class ResourceContainer {
 	private class MetaContainer {
@@ -29,16 +30,16 @@ public class ResourceContainer {
 
 	private MetaContainer meta;
 
-	public Resource resource;
+	public DesignFields resource;
 
-	public Collection<Resource> resources;
+	public Collection<DesignFields> resources;
 
-	public ResourceContainer resource(Resource resource) {
+	public ResourceContainer resource(DesignFields resource) {
 		setResource(resource);
 		return this;
 	}
 
-	public ResourceContainer resources(Collection<Resource> resources) {
+	public ResourceContainer resources(Collection<DesignFields> resources) {
 		setResources(resources);
 		return this;
 	}
@@ -48,11 +49,11 @@ public class ResourceContainer {
 		return this;
 	}
 
-	public ResourceContainer(Resource resource) {
+	public ResourceContainer(DesignFields resource) {
 		setResource(resource);
 	}
 
-	public ResourceContainer(Collection<Resource> resources) {
+	public ResourceContainer(Collection<DesignFields> resources) {
 		setResources(resources);
 	}
 
@@ -64,11 +65,11 @@ public class ResourceContainer {
 		this.meta = meta;
 	}
 
-	public Resource getResource() {
+	public DesignFields getResource() {
 		return resource;
 	}
 
-	public void setResource(Resource resource) {
+	public void setResource(DesignFields resource) {
 		if (resources != null) {
 			throw new RuntimeException(
 					"Can't set a singleValue for a multiValue");
@@ -77,11 +78,11 @@ public class ResourceContainer {
 		this.meta(null);
 	}
 
-	public Collection<Resource> getResources() {
+	public Collection<DesignFields> getResources() {
 		return resources;
 	}
 
-	public void setResources(Collection<Resource> resources) {
+	public void setResources(Collection<DesignFields> resources) {
 		if (resource != null) {
 			throw new RuntimeException(
 					"Can't set a multivalue for a singleValue");
@@ -125,44 +126,44 @@ public class ResourceContainer {
 		return false;
 	}
 
-	public void addResources(Resource resource) {
+	public void addResources(DesignFields resource) {
 		if (getResources() != null) {
 			getResources().add(resource);
 		} else {
-			setResources(new ArrayList<Resource>());
+			setResources(new ArrayList<DesignFields>());
 			this.addResources(resource);
 		}
 	}
 
-	public static Response ok(ArrayList<Resource> resources) {
-		return Response.ok(new ResourceContainer(resources)).build();
-	}
-	
-	public static Response ok(List<Resource> resources) {
-		return Response.ok(new ResourceContainer(resources)).build();
-	}
-	
-	public static Response ok(Collection<Resource> resources) {
+	public static Response ok(ArrayList<DesignFields> resources) {
 		return Response.ok(new ResourceContainer(resources)).build();
 	}
 
-	public static Response ok(Resource resource) {
+	public static Response ok(List<DesignFields> resources) {
+		return Response.ok(new ResourceContainer(resources)).build();
+	}
+
+	public static Response ok(Collection<DesignFields> resources) {
+		return Response.ok(new ResourceContainer(resources)).build();
+	}
+
+	public static Response ok(DesignFields resource) {
 		return Response.ok(new ResourceContainer(resource)).build();
 	}
 
 	public static Response deleted() {
 		return Response.noContent().build();
 	}
-	
+
 	public static Response updated() {
 		return Response.noContent().build();
 	}
-	
-	public static Response updated(Resource resource) {
+
+	public static Response updated(DesignFields resource) {
 		return Response.ok(new ResourceContainer(resource)).build();
 	}
 
-	public static Response created(Resource resource) {
+	public static Response created(DesignFields resource) {
 		return Response.status(Response.Status.CREATED).entity(new ResourceContainer(resource)).build();
 	}
 }

@@ -1,7 +1,8 @@
 package com.avacado.rest.model;
 
-/**
- * Created by PR003BO on 18/08/2015.
- */
+import java.util.List;
+import java.util.Map;
+
 public class Design {
+	private Map<String, String> fieldNameValuePair;
 }

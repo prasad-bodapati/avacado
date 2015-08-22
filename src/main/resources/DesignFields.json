@@ -1,0 +1,15 @@
+[{"name":"Brand Name", "type":"text", "example":"John Lewis"
+},
+  {
+    "name":"Price",
+    "type":"currency",
+    "example":"Fabric Mill, colour, quality"
+  },
+  {
+    "name":"Fabric details",
+    "type":"notes"
+  },
+  {
+    "name":"Number of pieces",
+    "type":"number"
+  }]
