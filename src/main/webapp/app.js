@@ -22,3 +22,8 @@ app.controller('MainCtrl', ['$route', '$routeParams', '$location',
     this.$location = $location;
     this.$routeParams = $routeParams;
 }]);
+
+
+app.goTo = function ( path ) {
+	$location.path( path );
+};

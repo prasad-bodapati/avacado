@@ -6,26 +6,12 @@
 </div>
 <div ng-show="showForm" class="col-lg-6">
  <h3 class="page-header"> New design details </h3>
- <div class="input-group input-group-lg" >
-  <span class="input-group-addon" id="sizing-addon1">Fabric details</span>
-  <input type="text" class="form-control" placeholder="Fabric mill, quality, colour" aria-describedby="sizing-addon1">
+
+<div class="input-group input-group-lg" ng-repeat="field in fields">
+  <span class="input-group-addon" id="sizing-addon2">{{field.name}}</span>
+  <input type="text" class="form-control" placeholder="Ex: {{field.example}}" aria-describedby="sizing-addon1">
+</div>
+    <button type="button" class="btn btn-default btn-lg col-sm-offset-9 col-sm-3" ng-click="hideButton()">Create</button>
 </div>
 
-<div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon2">Brand name</span>
-  <input type="text" class="form-control" placeholder="ex: M&S John Lewis" aria-describedby="sizing-addon1">
-</div>
-
-<div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon3">Price</span>
-  <span class="input-group-addon" id="sizing-addon4">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" aria-describedby="sizing-addon1">
-</div>
-
-<div class="input-group  input-group-lg">
-  <span class="input-group-addon" id="sizing-addon5">Number of pieces</span>
-  <input type="text" class="form-control" aria-describedby="sizing-addon1">
-</div> 
-
-</div>
 </div>
