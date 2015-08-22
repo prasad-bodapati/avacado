@@ -41,7 +41,6 @@ public class DesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return Response.ok(designFields).header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").build();
 	}
 }
