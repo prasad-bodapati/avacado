@@ -7,11 +7,13 @@
 <div ng-show="showForm" class="col-lg-6">
  <h3 class="page-header"> New design details </h3>
 
-<div class="input-group input-group-lg" ng-repeat="field in fields">
-  <span class="input-group-addon" id="sizing-addon2">{{field.name}}</span>
-  <input type="text" class="form-control" placeholder="Ex: {{field.example}}" aria-describedby="sizing-addon1">
+<div class="input-group input-group-lg" ng-repeat="field in fields" ng-init="count = $index">
+    <span class="input-group-addon" id="sizing-addon2">{{field.name}}</span>
+  <input type="text" class="form-control" placeholder="Ex: {{field.example}}" aria-describedby="sizing-addon1"
+         ng-model="designFields[count].value">
 </div>
-    <button type="button" class="btn btn-default btn-lg col-sm-offset-9 col-sm-3" ng-click="hideButton()">Create</button>
+    <button type="button" class="btn btn-default btn-lg col-sm-offset-9 col-sm-3" ng-click="createDesign(designFields)">Create</button>
+</div>
 </div>
 
 </div>

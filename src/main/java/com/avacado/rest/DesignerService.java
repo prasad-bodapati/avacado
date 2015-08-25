@@ -26,7 +26,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class DesignerService {
 
 	@POST
-	public String create(Design design) {
+	public String create(List<DesignFields> designFields) {
 		return "";
 	}
 

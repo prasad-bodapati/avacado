@@ -4,7 +4,7 @@ var newDesign = angular.module('newDesign', ['ngResource']);
 	return $resource('http://localhost:8080/avacado/services/design/fields',null, {isArray:true})
 }]);*/
 
-newDesign.controller('newDesignCtrl', ['$scope', '$http', function($scope, $http) {
+newDesign.controller('newDesignCtrl', ['$scope', '$http', '$resource',function($scope, $http, $resource) {
     $scope.size = "John";
     $scope.model = "Doe";
 	$scope.buttonName = "Start new design";
@@ -26,12 +26,35 @@ newDesign.controller('newDesignCtrl', ['$scope', '$http', function($scope, $http
 		crossDomain: true,
 		success: function(resp){
 			$scope.fields = resp;
+			$scope.designFields = resp;
 		},
 		error: function(e){
 			//window.alert("error" + e);
 		}
 	});
+	$scope.createDesign = function(userFields) {
+		var DesignFields = $resource("/avacado/services/design","",{saveData: {method:'POST', isArray: true}});
+		DesignFields.saveData({}, angular.toJson(userFields));
+		//var designFields1 = new DesignFields(JSON.stringify(userFields));
 
+		/*$.ajax({
+			type: "POST",
+			url: "/avacado/services/design",
+			dataType: 'json',
+			data: JSON.stringify(userFields),
+			contentType:"application/json",
+			processData: false
+		});*/
+
+		/*$.POST("/avacado/services/design",fields).
+			done(function(resp){
+				Window.alert("success" + resp);
+			}).
+			fail(function(e){
+				window.alert("error" + e);
+			});*/
+	};
+	$scope.count=0;
 }]);
 
 
