@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.avacado.repository.Repository;
-import com.avacado.model.DesignFields;
+import com.avacado.model.DesignField;
 import org.codehaus.jackson.map.ObjectMapper;
 
 @Produces({MediaType.APPLICATION_JSON})
@@ -20,7 +20,7 @@ public class DesignerService {
 
 	Repository repository;
 	@POST
-	public String create(List<DesignFields> designFields) {
+	public String create(List<DesignField> designFields) {
 
 		return "";
 	}
@@ -28,11 +28,11 @@ public class DesignerService {
 	@Path("/fields")
 	@GET
 	public Response getFields() {
-		List<DesignFields> designFields = new ArrayList<>();
+		List<DesignField> designFields = new ArrayList<>();
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			designFields = objectMapper.readValue(this.getClass().getResourceAsStream("/DesignFields.json"),
-					objectMapper.getTypeFactory().constructCollectionType(List.class, DesignFields.class));
+					objectMapper.getTypeFactory().constructCollectionType(List.class, DesignField.class));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

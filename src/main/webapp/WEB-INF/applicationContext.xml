@@ -9,6 +9,8 @@
 
 	<bean name="designerService" class="com.avacado.rest.DesignerService"/>
 
+
+
 	<jaxrs:server id="serviceEndpoints"  staticSubresourceResolution="true"
 				  beanNames="designerService">
 		<jaxrs:providers>

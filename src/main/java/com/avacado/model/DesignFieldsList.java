@@ -5,13 +5,13 @@ import java.util.List;
 
 @XmlRootElement
 public class DesignFieldsList {
-	private List<DesignFields> designFieldsList;
+	private List<DesignField> designFieldsList;
 
-	public List<DesignFields> getDesignFieldsList() {
+	public List<DesignField> getDesignFieldsList() {
 		return designFieldsList;
 	}
 
-	public void setDesignFieldsList(List<DesignFields> designFieldsList) {
+	public void setDesignFieldsList(List<DesignField> designFieldsList) {
 		this.designFieldsList = designFieldsList;
 	}
 }

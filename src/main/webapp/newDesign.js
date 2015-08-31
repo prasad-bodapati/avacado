@@ -1,9 +1,5 @@
 var newDesign = angular.module('newDesign', ['ngResource']);
 
-/*newDesign.factory('Fields',  ['$resource', function($resource) {
-	return $resource('http://localhost:8080/avacado/services/design/fields',null, {isArray:true})
-}]);*/
-
 newDesign.controller('newDesignCtrl', ['$scope', '$http', '$resource',function($scope, $http, $resource) {
     $scope.size = "John";
     $scope.model = "Doe";
