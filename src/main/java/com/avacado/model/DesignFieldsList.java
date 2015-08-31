@@ -1,4 +1,4 @@
-package com.avacado.rest.model;
+package com.avacado.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;

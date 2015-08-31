@@ -1,6 +1,5 @@
-package com.avacado.rest.model;
+package com.avacado.model;
 
-import java.util.List;
 import java.util.Map;
 
 public class Design {

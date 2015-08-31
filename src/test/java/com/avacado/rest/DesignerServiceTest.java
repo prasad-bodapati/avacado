@@ -3,10 +3,7 @@ package com.avacado.rest;
 import static org.junit.Assert.*;
 
 import javax.ws.rs.core.Response;
-import java.util.List;
 
-import com.avacado.rest.model.DesignFields;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 

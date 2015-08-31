@@ -1,9 +1,7 @@
-package com.avacado.rest.model;
+package com.avacado.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @XmlRootElement()
 public class DesignFields {
