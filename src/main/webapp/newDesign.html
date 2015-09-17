@@ -1,19 +1,25 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-app="newDesign" ng-controller="newDesignCtrl">
-<div ng-hide="showForm"> 
-<button type="button" class="btn btn-default btn-lg" ng-click="hideButton()">
-  <span class="button" aria-hidden="true"></span> {{buttonName}}
-</button>
-</div>
-<div ng-show="showForm" class="col-lg-6">
- <h3 class="page-header"> New design details </h3>
+    <div ng-hide="showForm">
+        <button type="button" class="btn btn-default btn-lg" ng-click="hideButton()">
+            <span class="button" aria-hidden="true"></span> {{buttonName}}
+        </button>
+    </div>
+    <div ng-show="showForm" class="col-lg-6">
+        <h3 class="page-header"> New design details </h3>
 
-<div class="input-group input-group-lg" ng-repeat="field in fields" ng-init="count = $index">
-    <span class="input-group-addon" id="sizing-addon2">{{field.name}}</span>
-  <input type="text" class="form-control" placeholder="Ex: {{field.example}}" aria-describedby="sizing-addon1"
-         ng-model="designFields[count].value">
-</div>
-    <button type="button" class="btn btn-default btn-lg col-sm-offset-9 col-sm-3" ng-click="createDesign(designFields)">Create</button>
-</div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">Season</span>
+            <input type="text"  ng-model="garment.season" placeholder="Ex: jan-2016"/>
+        </div>
+        <div class="input-group input-group-lg" ng-repeat="field in fields" ng-init="count = $index">
+            <span class="input-group-addon" id="sizing-addon2">{{field.name}}</span>
+            <input type="text" class="form-control" placeholder="Ex: {{field.example}}" aria-describedby="sizing-addon1"
+                   ng-model="designFields[count].value">
+        </div>
+        <button type="button" class="btn btn-default btn-lg col-sm-offset-9 col-sm-3"
+                ng-click="createDesign(designFields, garment)">Create
+        </button>
+    </div>
 </div>
 
 </div>

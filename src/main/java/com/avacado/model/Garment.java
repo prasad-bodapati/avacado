@@ -1,7 +1,5 @@
 package com.avacado.model;
 
-
-import java.util.Calendar;
 import java.util.List;
 
 import org.apache.jackrabbit.ocm.mapper.impl.annotation.Collection;
@@ -10,19 +8,19 @@ import org.apache.jackrabbit.ocm.mapper.impl.annotation.Node;
 
 @Node()
 public class Garment extends Model {
-	@Field
-	private Calendar season;
+	@Field()
+	private String season;
 
 	@Collection
 	private List<DesignField> designFields;
 
-	public Calendar getSeason() {
+	public String getSeason() {
 		return season;
 	}
 
-	public void setSeason(Calendar season) {
+	public void setSeason(String season) {
 		this.season = season;
-		setPath("/garments" + "/" + season.get(Calendar.MONTH) + "-" + season.get(Calendar.YEAR));
+		setPath("/garments" + "/" + season);
 	}
 
 	public List<DesignField> getDesignFields() {

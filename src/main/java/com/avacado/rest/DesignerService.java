@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.avacado.model.Garment;
 import com.avacado.repository.Repository;
 import com.avacado.model.DesignField;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -18,11 +19,19 @@ import org.codehaus.jackson.map.ObjectMapper;
 @Path("/design")
 public class DesignerService {
 
-	Repository repository;
-	@POST
-	public String create(List<DesignField> designFields) {
+	private Repository<Garment> repository;
 
-		return "";
+	public DesignerService() {
+	}
+
+	public DesignerService(Repository<Garment> repository) {
+		this.repository = repository;
+	}
+
+	@POST
+	public String create(Garment garment) {
+		String id = repository.create(garment);
+		return id;
 	}
 
 	@Path("/fields")

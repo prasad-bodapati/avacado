@@ -7,11 +7,15 @@
 
 	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
 
-	<bean name="designerService" class="com.avacado.rest.DesignerService"/>
+	<bean name="designerService" class="com.avacado.rest.DesignerService">
+		<constructor-arg name="repository" ref="garmentRepository"/>
+	</bean>
+	<bean name="garmentRepository" class="com.avacado.repository.JCRRepositoryImpl">
+		<constructor-arg value="garments"/>
+	</bean>
 
 
-
-	<jaxrs:server id="serviceEndpoints"  staticSubresourceResolution="true"
+	<jaxrs:server id="serviceEndpoints" staticSubresourceResolution="true"
 				  beanNames="designerService">
 		<jaxrs:providers>
 			<ref bean="jsonProvider"/>

@@ -7,6 +7,7 @@ newDesign.controller('newDesignCtrl', ['$scope', '$http', '$resource',function($
 	$scope.showForm = false;
 	$scope.hideButton = function($button){
 	$scope.showForm=true
+	$scope.garment="";
 	};
 
 	$.ajax({
@@ -22,9 +23,10 @@ newDesign.controller('newDesignCtrl', ['$scope', '$http', '$resource',function($
 			//window.alert("error" + e);
 		}
 	});
-	$scope.createDesign = function(userFields) {
+	$scope.createDesign = function(userFields, garment) {
 		var DesignFields = $resource("/avacado/services/design","",{saveData: {method:'POST', isArray: true}});
-		DesignFields.saveData({}, angular.toJson(userFields));
+		garment.designFields = angular.toJson(userFields)
+		DesignFields.saveData({}, angular.toJson(garment));
 	};
 	$scope.count=0;
 }]);

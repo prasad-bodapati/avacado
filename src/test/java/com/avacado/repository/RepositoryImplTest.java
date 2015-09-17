@@ -13,15 +13,16 @@ public class RepositoryImplTest {
 
 	@Test
 	public void can_perform_create_get_and_delete_on_a_simple_object() throws Exception {
-		Repository<DesignField> repository = repository = new JCRRepositoryImpl<DesignField>("designFields");
+		Repository<DesignField> repository = new JCRRepositoryImpl<DesignField>("designFields");
 		DesignField designField = new DesignField();
 		designField.setName("example");
 		designField.setType("notes");
 		designField.setValue("value1");
-		repository.create(designField);
-		DesignField fromServer = repository.get(designField.getClass(), "example");
+		String id = repository.create(designField);
+		Assert.assertNotNull(id);
+		DesignField fromServer = repository.get(id);
 		Assert.assertEquals(designField.getTitle(), fromServer.getTitle());
-		repository.delete("example");
+		repository.delete(id);
 	}
 
 	@Test
@@ -39,10 +40,11 @@ public class RepositoryImplTest {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.MONTH, Calendar.APRIL);
 		calendar.set(Calendar.YEAR, 2016);
-		garment.setSeason(calendar);
-		repository.create(garment);
-		Garment fromServer = repository.get(garment.getClass(), "4-2016");
+		garment.setSeason("Jan-2016");
+		String id = repository.create(garment);
+		Assert.assertNotNull(id);
+		Garment fromServer = repository.get(id);
 		Assert.assertEquals(designField.getTitle(), fromServer.getDesignFields().get(0).getName());
-		repository.delete("4-2016");
+		repository.delete(id);
 	}
 }

@@ -4,7 +4,7 @@ package com.avacado.repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
-import javax.jcr.version.VersionException;
+import javax.jcr.query.QueryManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +12,7 @@ import com.avacado.model.DesignField;
 import com.avacado.model.Garment;
 import com.avacado.model.Model;
 import org.apache.jackrabbit.core.TransientRepository;
+import org.apache.jackrabbit.core.query.QueryManagerImpl;
 import org.apache.jackrabbit.ocm.manager.ObjectContentManager;
 import org.apache.jackrabbit.ocm.manager.impl.ObjectContentManagerImpl;
 import org.apache.jackrabbit.ocm.mapper.Mapper;
@@ -52,25 +53,26 @@ public class JCRRepositoryImpl<T extends Model> implements Repository<T> {
 	}
 
 	@Override
-	public void create(T entity) throws VersionException {
+	public String create(T entity) {
 		initiateOCM();
 		ocm.insert(entity);
 		ocm.save();
 		session.logout();
+		return entity.getId();
 	}
 
 	@Override
-	public <T> T get(Class<T> className, String nodeSubPath) {
+	public <T> T get(String id) {
 		initiateOCM();
-		T model = (T) ocm.getObject(className, "/" + nodeRootPath + "/" + nodeSubPath);
+		T model = (T) ocm.getObjectByUuid(id);
 		session.logout();
 		return model;
 	}
 
 	@Override
-	public void delete(String nodeSubPath) {
+	public void delete(String id) {
 		initiateOCM();
-		ocm.remove("/" + nodeRootPath + "/" + nodeSubPath);
+		ocm.remove(get(id));
 		session.logout();
 	}
 
